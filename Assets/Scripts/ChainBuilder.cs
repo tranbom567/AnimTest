@@ -10,11 +10,14 @@ public class ChainBuilder : MonoBehaviour
     [SerializeField]
     private Vector3 boneAxis=Vector3.left;
     [SerializeField]
+    private Vector3 minClampRot=new Vector3(-360,-360,-360);
+    [SerializeField]
+    private Vector3 maxClampRot=new Vector3(360,360,360);
+    [SerializeField]
     private bool lockX,lockY,lockZ;
     void Start()
     {
         Transform root=transform;
-
         Springbone currentBone;
         while (root.childCount > 0)
         {
@@ -22,6 +25,8 @@ public class ChainBuilder : MonoBehaviour
             currentBone.stiffness=stiffness;
             currentBone.dragForce=dragForce;
             currentBone.boneAxis=boneAxis;
+            currentBone.minClampRot=minClampRot;
+            currentBone.maxClampRot=maxClampRot;
             currentBone.lockX=lockX;
             currentBone.lockY=lockY;
             currentBone.lockZ=lockZ;

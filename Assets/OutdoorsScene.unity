@@ -483,9 +483,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
-  stiffness: 90
-  dragForce: 0.5
+  stiffness: 500
+  dragForce: 0.45
   boneAxis: {x: 0, y: -1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 0
   lockZ: 0
@@ -615,8 +617,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -632,7 +636,6 @@ GameObject:
   - component: {fileID: 856856562}
   - component: {fileID: 856856561}
   - component: {fileID: 856856560}
-  - component: {fileID: 856856559}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -640,24 +643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &856856559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856856558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
-  stiffness: 10
-  dragForce: 0.5
-  boneAxis: {x: 0, y: -1, z: 0}
-  lockX: 0
-  lockY: 0
-  lockZ: 0
 --- !u!65 &856856560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -744,13 +729,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856856558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52289, y: 3.68, z: 2.82698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 586759551}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1497248425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1161670910
 MonoBehaviour:
@@ -765,8 +750,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -896,11 +883,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
+--- !u!1 &1497248424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1497248425}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1497248425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497248424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.52289, y: 3.68, z: 2.82698}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 856856563}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1610463169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,8 +935,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1307,8 +1330,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1325,8 +1350,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1343,8 +1370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1361,8 +1390,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1379,8 +1410,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1397,8 +1430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
   stiffness: 40
-  dragForce: 0.5
+  dragForce: 4.23
   boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 1
   lockZ: 0
@@ -1496,9 +1531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
-  stiffness: 90
-  dragForce: 0.5
+  stiffness: 500
+  dragForce: 0.45
   boneAxis: {x: 0, y: -1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
   lockX: 0
   lockY: 0
   lockZ: 0
@@ -1543,6 +1580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3025904435961867618}
+  - component: {fileID: 3025904435961867619}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtFront1_01
   m_TagString: Untagged
@@ -2423,6 +2461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038943793140553317}
+  - component: {fileID: 2038943793140553318}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtSide1_03
   m_TagString: Untagged
@@ -2571,6 +2610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8718757838405799623}
+  - component: {fileID: 8718757838405799624}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtFront1_02
   m_TagString: Untagged
@@ -3512,6 +3552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025858695432559525}
+  - component: {fileID: 1398726009142907713}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtSide1_01
   m_TagString: Untagged
@@ -3519,6 +3560,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1398726009142907713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398726009142907712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!137 &1400078334818249272
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -3870,6 +3931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4505192154440894325}
+  - component: {fileID: 4505192154440894326}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtBack1_02
   m_TagString: Untagged
@@ -4234,6 +4296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5470965997546055417}
+  - component: {fileID: 5470965997546055418}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtBack1_03
   m_TagString: Untagged
@@ -4391,6 +4454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327271930941599448}
+  - component: {fileID: 4327271930941599449}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtBack1_03
   m_TagString: Untagged
@@ -4478,6 +4542,26 @@ Transform:
   - {fileID: 9198723180181681413}
   m_Father: {fileID: 64738306944677895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2038943793140553318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871678009278123180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &2046743542854871712
 Transform:
   m_ObjectHideFlags: 0
@@ -4663,6 +4747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713314813289536374}
+  - component: {fileID: 2189904634767964780}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtFront1_03
   m_TagString: Untagged
@@ -4670,6 +4755,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2189904634767964780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189904634767964779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &2191265699866030157
 GameObject:
   m_ObjectHideFlags: 0
@@ -5573,6 +5678,26 @@ Transform:
   - {fileID: 3141371221492456949}
   m_Father: {fileID: 3614891015418481525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3025904435961867619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62729103100387870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &3026841150094810873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5851,6 +5976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6225518100840834187}
+  - component: {fileID: 6225518100840834188}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtSide1_02
   m_TagString: Untagged
@@ -7135,6 +7261,26 @@ Transform:
   - {fileID: 8928435308094076864}
   m_Father: {fileID: 9029841675321405845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4327271930941599449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932024600517196701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &4380232096239763025
 Transform:
   m_ObjectHideFlags: 0
@@ -7332,6 +7478,26 @@ Transform:
   - {fileID: 7227495210637005339}
   m_Father: {fileID: 8837342323986923727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4505192154440894326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463142591485337235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &4506484542259522769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7341,6 +7507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8392520259935317023}
+  - component: {fileID: 8392520259935317024}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtFront1_03
   m_TagString: Untagged
@@ -8394,6 +8561,26 @@ Transform:
   - {fileID: 4567608653894055292}
   m_Father: {fileID: 6350934524568708032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5470965997546055418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801907530457829465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &5479128088237289037
 Transform:
   m_ObjectHideFlags: 0
@@ -9147,6 +9334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828648620951016610}
+  - component: {fileID: 7828648620951016611}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtSide1_02
   m_TagString: Untagged
@@ -9211,6 +9399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5299134156635936277}
+  - component: {fileID: 6009589933406207508}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtBack1_01
   m_TagString: Untagged
@@ -9218,6 +9407,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6009589933406207508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009589933406207507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &6016447609489141766
 GameObject:
   m_ObjectHideFlags: 0
@@ -9243,6 +9452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2334369540662770597}
+  - component: {fileID: 6021410062387560468}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtSide1_03
   m_TagString: Untagged
@@ -9250,6 +9460,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6021410062387560468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021410062387560467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &6035901678372049469
 Transform:
   m_ObjectHideFlags: 0
@@ -9337,6 +9567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8482887831024854191}
+  - component: {fileID: 8482887831024854192}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtSide1_01
   m_TagString: Untagged
@@ -9519,6 +9750,26 @@ Transform:
   - {fileID: 7324377177375422289}
   m_Father: {fileID: 3833669715626815312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6225518100840834188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228029943791567855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &6235102173961509209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,6 +9906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899001328243842372}
+  - component: {fileID: 6296535009173242740}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtBack1_01
   m_TagString: Untagged
@@ -9662,6 +9914,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6296535009173242740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296535009173242739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &6308307355302442188
 Transform:
   m_ObjectHideFlags: 0
@@ -10245,6 +10517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4240719332744094885}
+  - component: {fileID: 6903488565608382067}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtFront1_01
   m_TagString: Untagged
@@ -10252,6 +10525,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6903488565608382067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903488565608382066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &6919284319516048075
 Transform:
   m_ObjectHideFlags: 0
@@ -11430,6 +11723,26 @@ Transform:
   - {fileID: 5673672832607555662}
   m_Father: {fileID: 315043544819623832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7828648620951016611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988858905192461404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &7836709831170080985
 Transform:
   m_ObjectHideFlags: 0
@@ -12359,6 +12672,26 @@ Transform:
   - {fileID: 6919284319516048075}
   m_Father: {fileID: 7400484004980688445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8392520259935317024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4506484542259522769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &8393311845292598666
 Transform:
   m_ObjectHideFlags: 0
@@ -12473,6 +12806,26 @@ Transform:
   - {fileID: 8556278779572758813}
   m_Father: {fileID: 8727574202609077825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8482887831024854192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088228261204407004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &8487187362223079804
 GameObject:
   m_ObjectHideFlags: 0
@@ -12498,6 +12851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149806561281779039}
+  - component: {fileID: 8497268457615941827}
   m_Layer: 0
   m_Name: J_Sec_R_SkirtBack1_02
   m_TagString: Untagged
@@ -12505,6 +12859,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8497268457615941827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497268457615941826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &8499033117261266482
 Transform:
   m_ObjectHideFlags: 0
@@ -12577,6 +12951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 836148033020820484}
+  - component: {fileID: 8554458998593134461}
   m_Layer: 0
   m_Name: J_Sec_L_SkirtFront1_02
   m_TagString: Untagged
@@ -12584,6 +12959,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8554458998593134461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554458998593134460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!4 &8556278779572758813
 Transform:
   m_ObjectHideFlags: 0
@@ -12711,6 +13106,26 @@ Transform:
   - {fileID: 6334317303538191438}
   m_Father: {fileID: 6099030807985204839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8718757838405799624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933968253911964734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e35175260f98ef43892f9bfd65ad3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainBuilder
+  stiffness: 50
+  dragForce: 1
+  boneAxis: {x: 0, y: 1, z: 0}
+  minClampRot: {x: -360, y: -360, z: -360}
+  maxClampRot: {x: 360, y: 360, z: 360}
+  lockX: 0
+  lockY: 1
+  lockZ: 0
 --- !u!1 &8719177069811057380
 GameObject:
   m_ObjectHideFlags: 0
@@ -13430,5 +13845,5 @@ SceneRoots:
   - {fileID: 1172965106}
   - {fileID: 1692122547}
   - {fileID: 202582862}
-  - {fileID: 856856563}
+  - {fileID: 1497248425}
   - {fileID: 543450651772899484}
