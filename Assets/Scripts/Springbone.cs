@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
@@ -24,6 +25,7 @@ public class SpringBone : MonoBehaviour
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
+    private JobHandle handle;
     void Start()
     {
         var transList=new List<Transform>();
@@ -60,24 +62,7 @@ public class SpringBone : MonoBehaviour
 
     void LateUpdate()
     {
-       /* for(int i = 0; i < bonesList.Count; i++)
-        {
-            execCurrentBone=bonesList[i];
-
-            execCurrentBone.currentTip=root.TransformPoint(execCurrentBone.localTipPos);
-            execCurrentBone.dx=execCurrentBone.currentTip-execCurrentBone.prevTip;
-
-            execCurrentBone.force=stiffness*execCurrentBone.dx;
-            execCurrentBone.force-=dragForce*execCurrentBone.velocity;
-
-            execCurrentBone.velocity+=execCurrentBone.force*Time.deltaTime;
-            execCurrentBone.prevTip+=execCurrentBone.velocity*Time.deltaTime;
-
-            execCurrentBone.prevTip=execCurrentBone.currentBone.position+(execCurrentBone.prevTip-execCurrentBone.currentBone.position).normalized*execCurrentBone.boneLength;
-            execCurrentBone.currentBone.rotation=Quaternion.FromToRotation(execCurrentBone.currentBone.TransformDirection(boneAxis),(execCurrentBone.prevTip-execCurrentBone.currentBone.position).normalized)
-            *execCurrentBone.currentBone.rotation;
-
-        }*/
+        
         SpringBoneJobProcessing boneJob = new()
         {
             boneAxis=boneAxis,
@@ -90,11 +75,12 @@ public class SpringBone : MonoBehaviour
             mass=mass,
             windForce=WindZoneData.getInstance.getWindForce
         };
-        boneJob.Schedule(transformDataBlock).Complete();
+        handle=boneJob.Schedule(transformDataBlock,handle);
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawRay(transform.position,WindZoneData.getInstance.getWindForce);
+        handle.Complete();
         foreach(var bone in bonesList){
             Gizmos.color=Color.white;
             Gizmos.DrawSphere(bone.prevTip,0.005f);
@@ -104,6 +90,7 @@ public class SpringBone : MonoBehaviour
     }
     void OnDestroy()
     {
+        handle.Complete();
         if(transformDataBlock.isCreated)
             transformDataBlock.Dispose();
         if(bonesList.IsCreated)
