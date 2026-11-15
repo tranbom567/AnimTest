@@ -11,6 +11,7 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
     public float3 boneAxis;
     public Matrix4x4 rootLocalToWorld;
     public float3 gravity;
+    public float3 windForce;
     public float dt;
     public void Execute(int index, TransformAccess transform)
     {
@@ -39,6 +40,7 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
         execCurrentBone.force=stiffness*execCurrentBone.dx;
         execCurrentBone.force-=dragForce*execCurrentBone.velocity;
         execCurrentBone.force+=gravity*mass;
+        execCurrentBone.force+=windForce;
         execCurrentBone.velocity+=execCurrentBone.force*dt;
         execCurrentBone.prevTip+=execCurrentBone.velocity*dt;
 

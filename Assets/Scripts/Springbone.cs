@@ -27,7 +27,7 @@ public class SpringBone : MonoBehaviour
     void Start()
     {
         var transList=new List<Transform>();
-        root=transform.root;
+        root=transform.parent;
         var currentTrans=transform;
         while (currentTrans.childCount > 0)
         {
@@ -87,11 +87,21 @@ public class SpringBone : MonoBehaviour
             rootLocalToWorld=root.localToWorldMatrix,
             dt=Time.deltaTime,
             gravity=gravity,
-            mass=mass
+            mass=mass,
+            windForce=WindZoneData.getInstance.getWindForce
         };
         boneJob.Schedule(transformDataBlock).Complete();
     }
-    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawRay(transform.position,WindZoneData.getInstance.getWindForce);
+        foreach(var bone in bonesList){
+            Gizmos.color=Color.white;
+            Gizmos.DrawSphere(bone.prevTip,0.005f);
+            Gizmos.color=Color.red;
+            Gizmos.DrawSphere(bone.currentTip,0.005f);
+        }
+    }
     void OnDestroy()
     {
         if(transformDataBlock.isCreated)
