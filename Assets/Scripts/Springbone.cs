@@ -1,71 +1,102 @@
+using System.Collections.Generic;
 using Unity.Collections;
-using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
-public class Springbone : MonoBehaviour
+
+public class SpringBone : MonoBehaviour
 {
-    private Transform children;
-    public float stiffness{get;set;}
-    public float dragForce{get;set;}
-    public Vector3 boneAxis{get;set;}
-    public Vector3 minClampRot{get;set;}
-    public Vector3 maxClampRot{get;set;}
-    public bool lockX{get;set;}
-    public bool lockY{get;set;}
-    public bool lockZ{get;set;}
-    private float boneLength;
-    //private float3 prevTip,currentTip,localTipPos,force,dx,velocity,head;
-    private NativeReference<SpringBoneData>springDataBlock=new(Allocator.Persistent);
-    private Vector3 finalRot;
-    private SpringBoneJob spbJob;
-    private SpringBoneData mainBoneData;
+    public struct Bone
+    {
+        public float3 prevTip,currentTip,dx,force,velocity,localTipPos;
+        public float boneLength;
+    }
+    [SerializeField]
+    private float stiffness=10f;
+    [SerializeField]
+    private float dragForce=0.5f;
+    [SerializeField]
+    private float3 gravity=Vector3.down*9.81f;
+    [SerializeField]
+    private float mass=1;
+    [SerializeField]
+    private Vector3 boneAxis=Vector3.up;
+    private Transform root;
+    private NativeList<Bone> bonesList=new(Allocator.Persistent);
+    private TransformAccessArray transformDataBlock;
     void Start()
     {
-        children=transform.GetChild(0);
-        boneLength=Vector3.Magnitude(children.position-transform.position);
-        var localTipWorld=transform.TransformPoint(children.localPosition);
-        mainBoneData=new SpringBoneData()
+        var transList=new List<Transform>();
+        root=transform.root;
+        var currentTrans=transform;
+        while (currentTrans.childCount > 0)
         {
-            localTipPos=children.localPosition,
-            currentTip=localTipWorld,
-            prevTip=localTipWorld
-        };
+            var childBone=currentTrans.GetChild(0);
+            var boneInit=new Bone();
+            var putChildToRootLocal=root.InverseTransformPoint(childBone.position);
+            boneInit.localTipPos=putChildToRootLocal;
+            boneInit.currentTip=root.TransformPoint(boneInit.localTipPos);
+            boneInit.prevTip=boneInit.currentTip;
+            boneInit.boneLength=Vector3.Magnitude(boneInit.currentTip-(float3)currentTrans.position);
+            bonesList.Add(boneInit);
+            transList.Add(currentTrans);
+            currentTrans=childBone;
+        }
+        var lastBoneLength=bonesList[bonesList.Count-1].boneLength;
+        //check for leaf bone
+        if (currentTrans.childCount == 0)
+        {
+            var boneInit=new Bone();
+            var putChildToRootLocal=root.InverseTransformPoint(currentTrans.position+currentTrans.TransformDirection(boneAxis)*lastBoneLength);
+            boneInit.localTipPos=putChildToRootLocal;
+            boneInit.currentTip=root.TransformPoint(boneInit.localTipPos);
+            boneInit.prevTip=boneInit.currentTip;
+            boneInit.boneLength=lastBoneLength;
+            bonesList.Add(boneInit);
+            transList.Add(currentTrans);
+        }
+        transformDataBlock=new(transList.ToArray());
     }
-    void LateUpdate() 
+
+    void LateUpdate()
     {
-        mainBoneData.head=transform.position;
-        mainBoneData.currentTip=transform.TransformPoint(mainBoneData.localTipPos);
-        springDataBlock.Value=mainBoneData; //pass data as reference
-        spbJob=new()
+       /* for(int i = 0; i < bonesList.Count; i++)
         {
-            springDataBlock=springDataBlock,
+            execCurrentBone=bonesList[i];
+
+            execCurrentBone.currentTip=root.TransformPoint(execCurrentBone.localTipPos);
+            execCurrentBone.dx=execCurrentBone.currentTip-execCurrentBone.prevTip;
+
+            execCurrentBone.force=stiffness*execCurrentBone.dx;
+            execCurrentBone.force-=dragForce*execCurrentBone.velocity;
+
+            execCurrentBone.velocity+=execCurrentBone.force*Time.deltaTime;
+            execCurrentBone.prevTip+=execCurrentBone.velocity*Time.deltaTime;
+
+            execCurrentBone.prevTip=execCurrentBone.currentBone.position+(execCurrentBone.prevTip-execCurrentBone.currentBone.position).normalized*execCurrentBone.boneLength;
+            execCurrentBone.currentBone.rotation=Quaternion.FromToRotation(execCurrentBone.currentBone.TransformDirection(boneAxis),(execCurrentBone.prevTip-execCurrentBone.currentBone.position).normalized)
+            *execCurrentBone.currentBone.rotation;
+
+        }*/
+        SpringBoneJobProcessing boneJob = new()
+        {
+            boneAxis=boneAxis,
             stiffness=stiffness,
-            boneLength=boneLength,
-            dragforce=dragForce,
-            dt=Time.deltaTime
+            dragForce=dragForce,
+            bonesList=bonesList.AsDeferredJobArray(),
+            rootLocalToWorld=root.localToWorldMatrix,
+            dt=Time.deltaTime,
+            gravity=gravity,
+            mass=mass
         };
-    spbJob.Schedule().Complete();
-    mainBoneData=springDataBlock.Value; //receive processed data
-    finalRot=Quaternion.FromToRotation(transform.TransformDirection(boneAxis),((Vector3)(mainBoneData.head-mainBoneData.prevTip)).normalized).eulerAngles;
-    if(lockX)
-        finalRot.x=0;
-    if(lockY)
-        finalRot.y=0;
-    if(lockZ)
-        finalRot.z=0;
-    finalRot.x=Mathf.Clamp(finalRot.x,minClampRot.x,maxClampRot.x);
-    finalRot.y=Mathf.Clamp(finalRot.y,minClampRot.y,maxClampRot.y);
-    finalRot.z=Mathf.Clamp(finalRot.z,minClampRot.z,maxClampRot.z);
-    children.SetPositionAndRotation(mainBoneData.prevTip,Quaternion.Euler(finalRot));
+        boneJob.Schedule(transformDataBlock).Complete();
     }
     
-    void OnDrawGizmos()
+    void OnDestroy()
     {
-        
-        Gizmos.DrawSphere(mainBoneData.currentTip,0.005f);
-        Gizmos.color=Color.red;
-        Gizmos.DrawSphere(mainBoneData.prevTip,0.005f);
-        
+        if(transformDataBlock.isCreated)
+            transformDataBlock.Dispose();
+        if(bonesList.IsCreated)
+            bonesList.Dispose();
     }
 }
