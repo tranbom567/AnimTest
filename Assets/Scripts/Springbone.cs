@@ -24,6 +24,7 @@ public class SpringBone : MonoBehaviour
     private Vector3 boneAxis=Vector3.up;
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
+    private NativeList<SpringBoneCollider.SpringBoneColliderDataBlock>collidersDataBlock=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
     private JobHandle handle;
     void Start()
@@ -31,6 +32,8 @@ public class SpringBone : MonoBehaviour
         var transList=new List<Transform>();
         root=transform.parent;
         var currentTrans=transform;
+        
+        //init bone
         while (currentTrans.childCount > 0)
         {
             var childBone=currentTrans.GetChild(0);
@@ -58,6 +61,18 @@ public class SpringBone : MonoBehaviour
             transList.Add(currentTrans);
         }
         transformDataBlock=new(transList.ToArray());
+        //init colliders
+        var springBoneCollidersList=FindObjectsByType<SpringBoneCollider>();
+        if(springBoneCollidersList==null)
+            return;
+        foreach(var collider in springBoneCollidersList)
+        {
+            collidersDataBlock.Add(new SpringBoneCollider.SpringBoneColliderDataBlock()
+            {
+                localPos=root.InverseTransformPoint(collider.getPos),
+                radius=collider.getRadius
+            });
+        }
     }
 
     void LateUpdate()
@@ -73,7 +88,8 @@ public class SpringBone : MonoBehaviour
             dt=Time.deltaTime,
             gravity=gravity,
             mass=mass,
-            windForce=WindZoneData.getInstance.getWindForce
+            windForce=WindZoneData.getInstance.getWindForce,
+            collidersDataBlock=collidersDataBlock.AsDeferredJobArray()
         };
         handle=boneJob.Schedule(transformDataBlock,handle);
     }

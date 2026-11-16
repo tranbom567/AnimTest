@@ -6,8 +6,9 @@ using UnityEngine.Jobs;
 [BurstCompile]
 public struct SpringBoneJobProcessing : IJobParallelForTransform
 {
-    public NativeArray<SpringBone.Bone>bonesList;
-    public float stiffness,dragForce,mass;
+    public NativeArray<SpringBone.Bone> bonesList;
+    public NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock> collidersDataBlock;
+    public float stiffness, dragForce, mass;
     public float3 boneAxis;
     public Matrix4x4 rootLocalToWorld;
     public float3 gravity;
@@ -33,20 +34,30 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
             *execCurrentBone.currentBone.rotation;
 
         }*/
-        SpringBone.Bone execCurrentBone=bonesList[index];
-        execCurrentBone.currentTip=rootLocalToWorld.MultiplyPoint3x4(execCurrentBone.localTipPos);
-        execCurrentBone.dx=execCurrentBone.currentTip-execCurrentBone.prevTip;
+        SpringBone.Bone execCurrentBone = bonesList[index];
+        execCurrentBone.currentTip = rootLocalToWorld.MultiplyPoint3x4(execCurrentBone.localTipPos);
+        execCurrentBone.dx = execCurrentBone.currentTip - execCurrentBone.prevTip;
 
-        execCurrentBone.force=stiffness*execCurrentBone.dx;
-        execCurrentBone.force-=dragForce*execCurrentBone.velocity;
-        execCurrentBone.force+=gravity*mass;
-        execCurrentBone.force+=windForce;
-        execCurrentBone.velocity+=execCurrentBone.force*dt;
-        execCurrentBone.prevTip+=execCurrentBone.velocity*dt;
+        execCurrentBone.force = stiffness * execCurrentBone.dx;
+        execCurrentBone.force -= dragForce * execCurrentBone.velocity;
+        execCurrentBone.force += gravity * mass;
+        execCurrentBone.force += windForce;
+        float3 colliderWorldPos;
 
-        execCurrentBone.prevTip=transform.position+((Vector3)execCurrentBone.prevTip-transform.position).normalized*execCurrentBone.boneLength;
-        transform.rotation=Quaternion.FromToRotation(transform.rotation*boneAxis,((Vector3)execCurrentBone.prevTip-transform.position).normalized)
-        *transform.rotation;
-        bonesList[index]=execCurrentBone;
+        execCurrentBone.velocity += execCurrentBone.force * dt;
+        execCurrentBone.prevTip += execCurrentBone.velocity * dt;
+
+        foreach (var colliderData in collidersDataBlock)
+        {
+            colliderWorldPos = rootLocalToWorld.MultiplyPoint3x4(colliderData.localPos);
+            if (Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos) < colliderData.radius)
+            {
+                execCurrentBone.prevTip += (float3)(colliderData.radius - Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos)) * ((Vector3)(execCurrentBone.prevTip - colliderWorldPos)).normalized;
+            }
+        }
+        execCurrentBone.prevTip = transform.position + ((Vector3)execCurrentBone.prevTip - transform.position).normalized * execCurrentBone.boneLength;
+        transform.rotation = Quaternion.FromToRotation(transform.rotation * boneAxis, ((Vector3)execCurrentBone.prevTip - transform.position).normalized)
+        * transform.rotation;
+        bonesList[index] = execCurrentBone;
     }
 }
