@@ -5,8 +5,8 @@ public class SpringBoneCollider : MonoBehaviour
 {
     public struct SpringBoneColliderDataBlock
     {
+        public float3 position;
         public float radius;
-        public float3 localPos;
     }
     [SerializeField]
     private float radius=.07f;

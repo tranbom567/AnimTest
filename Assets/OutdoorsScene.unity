@@ -453,6 +453,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &991962727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991962729}
+  - component: {fileID: 991962728}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &991962728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991962727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.06
+--- !u!4 &991962729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991962727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.929, y: 1.276, z: 0.281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172965102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3270060814248988357}
+  - component: {fileID: 3270060814248988358}
   m_Layer: 0
   m_Name: J_Bip_R_UpperLeg Collider
   m_TagString: Untagged
@@ -1185,6 +1231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3114677545203567681}
+  - component: {fileID: 3114677545203567682}
   m_Layer: 0
   m_Name: J_Bip_L_LowerArm Collider.006
   m_TagString: Untagged
@@ -1796,6 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6264738328754954914}
+  - component: {fileID: 6264738328754954915}
   m_Layer: 0
   m_Name: J_Bip_R_LowerArm Collider.004
   m_TagString: Untagged
@@ -1891,6 +1939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2178836226199962310}
+  - component: {fileID: 2178836226199962311}
   m_Layer: 0
   m_Name: J_Bip_L_LowerArm Collider.004
   m_TagString: Untagged
@@ -2368,6 +2417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713961467965400917}
+  - component: {fileID: 1713961467965400918}
   m_Layer: 0
   m_Name: J_Bip_L_UpperArm Collider.005
   m_TagString: Untagged
@@ -3070,6 +3120,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5124701597193016258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713961467965400918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183597621716131514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &1714028693513664065
 Transform:
   m_ObjectHideFlags: 0
@@ -3598,6 +3661,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2957734650223596655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2178836226199962311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811317884187148573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &2185196514401406871
 GameObject:
   m_ObjectHideFlags: 0
@@ -4253,6 +4329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925438217162080910}
+  - component: {fileID: 2850082607537629245}
   m_Layer: 0
   m_Name: J_Bip_R_UpperArm Collider.005
   m_TagString: Untagged
@@ -4260,6 +4337,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2850082607537629245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850082607537629244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &2853335554879625722
 Transform:
   m_ObjectHideFlags: 0
@@ -4520,6 +4610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1967708523954817947}
+  - component: {fileID: 3039180009218553214}
   m_Layer: 0
   m_Name: J_Bip_R_Hand Collider.001
   m_TagString: Untagged
@@ -4527,6 +4618,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3039180009218553214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039180009218553213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &3046710568201109439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4699,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2957734650223596655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3114677545203567682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238487360738601201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &3142292513739754408
 GameObject:
   m_ObjectHideFlags: 0
@@ -4863,6 +4980,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4088696469380495761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3270060814248988358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192893973923588527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &3278689331853480371
 Transform:
   m_ObjectHideFlags: 0
@@ -5320,6 +5450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9202245666964810742}
+  - component: {fileID: 9202245666964810743}
   m_Layer: 0
   m_Name: J_Bip_R_UpperArm Collider.004
   m_TagString: Untagged
@@ -5719,6 +5850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8658956597472947577}
+  - component: {fileID: 8658956597472947578}
   m_Layer: 0
   m_Name: J_Bip_L_LowerArm Collider.007
   m_TagString: Untagged
@@ -6292,6 +6424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5314199701581479342}
+  - component: {fileID: 5314199701581479343}
   m_Layer: 0
   m_Name: J_Bip_R_LowerArm Collider.005
   m_TagString: Untagged
@@ -8054,6 +8187,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7437890892175287011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5314199701581479343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112796668250685327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &5371084888695703281
 Transform:
   m_ObjectHideFlags: 0
@@ -8223,6 +8369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8194515321601158470}
+  - component: {fileID: 8194515321601158471}
   m_Layer: 0
   m_Name: J_Bip_R_LowerArm Collider.006
   m_TagString: Untagged
@@ -9219,6 +9366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4379250054139113432}
+  - component: {fileID: 6052524580301078435}
   m_Layer: 0
   m_Name: J_Bip_L_LowerArm Collider.005
   m_TagString: Untagged
@@ -9226,6 +9374,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6052524580301078435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052524580301078434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &6052559299778147824
 GameObject:
   m_ObjectHideFlags: 0
@@ -9521,6 +9682,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7437890892175287011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6264738328754954915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707597801081664111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &6269712324304500280
 Transform:
   m_ObjectHideFlags: 0
@@ -9622,6 +9796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7351714763462066880}
+  - component: {fileID: 7351714763462066881}
   m_Layer: 0
   m_Name: J_Bip_L_UpperArm Collider.003
   m_TagString: Untagged
@@ -10217,6 +10392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9216776433322381580}
+  - component: {fileID: 9216776433322381581}
   m_Layer: 0
   m_Name: J_Bip_C_Spine Collider.001
   m_TagString: Untagged
@@ -10265,6 +10441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8885706812374080429}
+  - component: {fileID: 8885706812374080430}
   m_Layer: 0
   m_Name: J_Bip_R_UpperLeg Collider.002
   m_TagString: Untagged
@@ -10559,6 +10736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6085951549652265198}
+  - component: {fileID: 6865235292353111511}
   m_Layer: 0
   m_Name: J_Bip_R_LowerArm Collider.007
   m_TagString: Untagged
@@ -10566,6 +10744,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6865235292353111511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865235292353111510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &6898775848788899999
 Transform:
   m_ObjectHideFlags: 0
@@ -10896,6 +11087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7894274193715036836}
+  - component: {fileID: 7894274193715036837}
   m_Layer: 0
   m_Name: J_Bip_C_UpperChest Collider.003
   m_TagString: Untagged
@@ -11103,6 +11295,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5124701597193016258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7351714763462066881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325134514896919151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &7353560221844042297
 GameObject:
   m_ObjectHideFlags: 0
@@ -11212,6 +11417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4909711925916775703}
+  - component: {fileID: 7370579133120454561}
   m_Layer: 0
   m_Name: J_Bip_L_UpperLeg Collider.001
   m_TagString: Untagged
@@ -11219,6 +11425,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7370579133120454561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370579133120454560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &7372643374857138539
 Transform:
   m_ObjectHideFlags: 0
@@ -11711,6 +11930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 687323574111829892}
+  - component: {fileID: 7767832471092276506}
   m_Layer: 0
   m_Name: J_Bip_R_UpperArm Collider.003
   m_TagString: Untagged
@@ -11718,6 +11938,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7767832471092276506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767832471092276505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &7772710395671986776
 GameObject:
   m_ObjectHideFlags: 0
@@ -11727,6 +11960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6898775848788899999}
+  - component: {fileID: 7772710395671986777}
   m_Layer: 0
   m_Name: J_Bip_C_UpperChest Collider.005
   m_TagString: Untagged
@@ -11734,6 +11968,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7772710395671986777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772710395671986776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &7775500174581371448
 Transform:
   m_ObjectHideFlags: 0
@@ -11900,6 +12147,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6316686500573103410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7894274193715036837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196533011658606217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &7897053366386069599
 Transform:
   m_ObjectHideFlags: 0
@@ -12299,6 +12559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4168293735414421784}
+  - component: {fileID: 8145829909917598551}
   m_Layer: 0
   m_Name: J_Bip_C_UpperChest Collider.004
   m_TagString: Untagged
@@ -12306,6 +12567,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8145829909917598551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145829909917598550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &8174191020025776111
 Transform:
   m_ObjectHideFlags: 0
@@ -12373,6 +12647,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7437890892175287011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8194515321601158471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468482098417438738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &8200380392046297499
 GameObject:
   m_ObjectHideFlags: 0
@@ -12679,6 +12966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359326419867565218}
+  - component: {fileID: 8525872850242205938}
   m_Layer: 0
   m_Name: J_Bip_L_UpperLeg Collider.002
   m_TagString: Untagged
@@ -12686,6 +12974,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8525872850242205938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525872850242205937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &8545493901735197774
 GameObject:
   m_ObjectHideFlags: 0
@@ -12711,6 +13012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8892858042234917120}
+  - component: {fileID: 8892858042234917121}
   m_Layer: 0
   m_Name: J_Bip_L_UpperArm Collider.004
   m_TagString: Untagged
@@ -12876,6 +13178,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2957734650223596655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8658956597472947578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950376342513946641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &8669550436024291338
 GameObject:
   m_ObjectHideFlags: 0
@@ -12885,6 +13200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2647957103192584739}
+  - component: {fileID: 8669550436024291339}
   m_Layer: 0
   m_Name: J_Bip_L_UpperLeg Collider
   m_TagString: Untagged
@@ -12892,6 +13208,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8669550436024291339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669550436024291338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &8685683550335158008
 Transform:
   m_ObjectHideFlags: 0
@@ -13159,6 +13488,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4088696469380495761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8885706812374080430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662276149178099880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &8892858042234917120
 Transform:
   m_ObjectHideFlags: 0
@@ -13174,6 +13516,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5124701597193016258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8892858042234917121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581078966264077914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &8895471368270418533
 Transform:
   m_ObjectHideFlags: 0
@@ -13515,6 +13870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7286294164441423529}
+  - component: {fileID: 9022584281936290640}
   m_Layer: 0
   m_Name: J_Bip_L_Hand Collider.001
   m_TagString: Untagged
@@ -13522,6 +13878,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9022584281936290640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022584281936290639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &9069538606705304110
 Transform:
   m_ObjectHideFlags: 0
@@ -13651,6 +14020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3655219790563681557}
+  - component: {fileID: 9100928733501830502}
   m_Layer: 0
   m_Name: J_Bip_R_UpperLeg Collider.001
   m_TagString: Untagged
@@ -13658,6 +14028,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9100928733501830502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100928733501830501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &9101808929084795739
 GameObject:
   m_ObjectHideFlags: 0
@@ -13785,6 +14168,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6688157134440490679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9202245666964810743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602509987653720995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!1 &9208694552292655182
 GameObject:
   m_ObjectHideFlags: 0
@@ -13816,6 +14212,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 423736463151554842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9216776433322381581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606189354457738648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b922e24dfa95438a38424e0aefa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpringBoneCollider
+  radius: 0.07
 --- !u!4 &9217194942021075345
 Transform:
   m_ObjectHideFlags: 0
@@ -13862,3 +14271,4 @@ SceneRoots:
   - {fileID: 1671196399}
   - {fileID: 1633984612}
   - {fileID: 386208126}
+  - {fileID: 991962729}

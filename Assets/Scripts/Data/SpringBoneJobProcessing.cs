@@ -49,7 +49,7 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
 
         foreach (var colliderData in collidersDataBlock)
         {
-            colliderWorldPos = rootLocalToWorld.MultiplyPoint3x4(colliderData.localPos);
+            colliderWorldPos = colliderData.position;
             if (Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos) < colliderData.radius)
             {
                 execCurrentBone.prevTip += (float3)(colliderData.radius - Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos)) * ((Vector3)(execCurrentBone.prevTip - colliderWorldPos)).normalized;

@@ -4,6 +4,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
+using UnityEngine.XR;
 
 public class SpringBone : MonoBehaviour
 {
@@ -24,15 +25,14 @@ public class SpringBone : MonoBehaviour
     private Vector3 boneAxis=Vector3.up;
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
-    private NativeList<SpringBoneCollider.SpringBoneColliderDataBlock>collidersDataBlock=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
+    private SpringBoneCollider[] springBoneCollidersList;
     private JobHandle handle;
     void Start()
     {
-        var transList=new List<Transform>();
         root=transform.parent;
         var currentTrans=transform;
-        
+        var transList=new List<Transform>();
         //init bone
         while (currentTrans.childCount > 0)
         {
@@ -62,22 +62,23 @@ public class SpringBone : MonoBehaviour
         }
         transformDataBlock=new(transList.ToArray());
         //init colliders
-        var springBoneCollidersList=FindObjectsByType<SpringBoneCollider>();
-        if(springBoneCollidersList==null)
-            return;
-        foreach(var collider in springBoneCollidersList)
-        {
-            collidersDataBlock.Add(new SpringBoneCollider.SpringBoneColliderDataBlock()
-            {
-                localPos=root.InverseTransformPoint(collider.getPos),
-                radius=collider.getRadius
-            });
-        }
+        springBoneCollidersList=FindObjectsByType<SpringBoneCollider>();
+        
+       
     }
 
     void LateUpdate()
     {
-        
+        var collidersDataBlock=new NativeList<SpringBoneCollider.SpringBoneColliderDataBlock>(Allocator.TempJob);
+        if (springBoneCollidersList != null)
+        {
+            foreach(var collider in springBoneCollidersList)
+                collidersDataBlock.Add(new()
+                {
+                    position=collider.getPos,
+                    radius=collider.getRadius
+                });
+        }
         SpringBoneJobProcessing boneJob = new()
         {
             boneAxis=boneAxis,
@@ -92,6 +93,8 @@ public class SpringBone : MonoBehaviour
             collidersDataBlock=collidersDataBlock.AsDeferredJobArray()
         };
         handle=boneJob.Schedule(transformDataBlock,handle);
+        handle.Complete();
+        collidersDataBlock.Dispose();
     }
     void OnDrawGizmosSelected()
     {
