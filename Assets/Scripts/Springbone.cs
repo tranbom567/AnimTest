@@ -32,8 +32,8 @@ public class SpringBone : MonoBehaviour
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
-    private SpringBoneCollider[] springBoneCollidersList;
-    private NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock>collidersDataBlock;
+
+    
     private JobHandle handle;
     void Start()
     {
@@ -69,26 +69,14 @@ public class SpringBone : MonoBehaviour
         }
         transformDataBlock=new(transList.ToArray());
         //init colliders
-        springBoneCollidersList=FindObjectsByType<SpringBoneCollider>();
-        collidersDataBlock=new(new SpringBoneCollider.SpringBoneColliderDataBlock[springBoneCollidersList.Length],Allocator.Persistent);
+        
        
     }
 
     void LateUpdate()
     {
         
-        if (springBoneCollidersList != null)
-        {
-            var currentIndex=0;
-            foreach(var collider in springBoneCollidersList){
-                collidersDataBlock[currentIndex]=new()
-                {
-                    position=collider.getPos,
-                    radius=collider.getRadius
-                };
-                currentIndex++;
-            }
-        }
+        
         SpringBoneJobProcessing boneJob = new()
         {
             boneAxis=boneAxis,
@@ -100,7 +88,7 @@ public class SpringBone : MonoBehaviour
             gravity=gravity,
             mass=mass,
             windForce=WindZoneData.getInstance.getWindForce,
-            collidersDataBlock=collidersDataBlock,
+            collidersDataBlock=SpringBoneColliderManager.getInstance.GetColliderDataBlocks,
             rootRotation=root.rotation,
             boneUp=boneUp,
             lockTwist=lockTwist,
@@ -127,7 +115,6 @@ public class SpringBone : MonoBehaviour
             transformDataBlock.Dispose();
         if(bonesList.IsCreated)
             bonesList.Dispose();
-        if(collidersDataBlock.IsCreated)
-            collidersDataBlock.Dispose();
+        SpringBoneColliderManager.getInstance.resetAllColliders();
     }
 }

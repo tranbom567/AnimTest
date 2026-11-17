@@ -7,6 +7,7 @@ using UnityEngine.Jobs;
 public struct SpringBoneJobProcessing : IJobParallelForTransform
 {
     public NativeArray<SpringBone.Bone> bonesList;
+    [ReadOnly]
     public NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock> collidersDataBlock;
     public float stiffness, dragForce, mass;
     public float3 boneAxis, boneUp;
@@ -57,9 +58,10 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
         foreach (var colliderData in collidersDataBlock)
         {
             colliderWorldPos = colliderData.position;
-            if (Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos) < colliderData.radius)
+            var distance=Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos);
+            if (distance < colliderData.radius)
             {
-                execCurrentBone.prevTip += (float3)(colliderData.radius - Vector3.Distance(execCurrentBone.prevTip, colliderWorldPos)) * ((Vector3)(execCurrentBone.prevTip - colliderWorldPos)).normalized;
+                execCurrentBone.prevTip += (float3)(colliderData.radius - distance) * ((Vector3)(execCurrentBone.prevTip - colliderWorldPos)).normalized;
             }
         }
         execCurrentBone.prevTip = transform.position + ((Vector3)execCurrentBone.prevTip - transform.position).normalized * execCurrentBone.boneLength;
