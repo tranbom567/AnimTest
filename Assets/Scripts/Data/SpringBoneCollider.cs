@@ -11,7 +11,7 @@ public class SpringBoneCollider : MonoBehaviour
     [SerializeField]
     private float radius=.07f;
     public Vector3 getPos=>transform.position;
-    public float getRadius=>radius;
+    public float getRadius=>radius*transform.localScale.magnitude;
     
     void OnDrawGizmosSelected()
     {

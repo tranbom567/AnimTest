@@ -23,10 +23,15 @@ public class SpringBone : MonoBehaviour
     private float mass=1;
     [SerializeField]
     private Vector3 boneAxis=Vector3.up;
+    [SerializeField]
+    private bool lockTwist=false;
+    [SerializeField]
+    private Vector3 boneUp=Vector3.forward;
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
     private SpringBoneCollider[] springBoneCollidersList;
+    private NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock>collidersDataBlock;
     private JobHandle handle;
     void Start()
     {
@@ -63,21 +68,24 @@ public class SpringBone : MonoBehaviour
         transformDataBlock=new(transList.ToArray());
         //init colliders
         springBoneCollidersList=FindObjectsByType<SpringBoneCollider>();
-        
+        collidersDataBlock=new(new SpringBoneCollider.SpringBoneColliderDataBlock[springBoneCollidersList.Length],Allocator.Persistent);
        
     }
 
     void LateUpdate()
     {
-        var collidersDataBlock=new NativeList<SpringBoneCollider.SpringBoneColliderDataBlock>(Allocator.TempJob);
+        
         if (springBoneCollidersList != null)
         {
-            foreach(var collider in springBoneCollidersList)
-                collidersDataBlock.Add(new()
+            var currentIndex=0;
+            foreach(var collider in springBoneCollidersList){
+                collidersDataBlock[currentIndex]=new()
                 {
                     position=collider.getPos,
                     radius=collider.getRadius
-                });
+                };
+                currentIndex++;
+            }
         }
         SpringBoneJobProcessing boneJob = new()
         {
@@ -90,11 +98,13 @@ public class SpringBone : MonoBehaviour
             gravity=gravity,
             mass=mass,
             windForce=WindZoneData.getInstance.getWindForce,
-            collidersDataBlock=collidersDataBlock.AsDeferredJobArray()
+            collidersDataBlock=collidersDataBlock,
+            rootRotation=root.rotation,
+            boneUp=boneUp,
+            lockTwist=lockTwist
         };
         handle=boneJob.Schedule(transformDataBlock,handle);
         handle.Complete();
-        collidersDataBlock.Dispose();
     }
     void OnDrawGizmosSelected()
     {
@@ -114,5 +124,7 @@ public class SpringBone : MonoBehaviour
             transformDataBlock.Dispose();
         if(bonesList.IsCreated)
             bonesList.Dispose();
+        if(collidersDataBlock.IsCreated)
+            collidersDataBlock.Dispose();
     }
 }

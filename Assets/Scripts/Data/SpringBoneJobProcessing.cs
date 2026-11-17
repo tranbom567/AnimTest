@@ -9,11 +9,16 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
     public NativeArray<SpringBone.Bone> bonesList;
     public NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock> collidersDataBlock;
     public float stiffness, dragForce, mass;
-    public float3 boneAxis;
+    public float3 boneAxis, boneUp;
     public Matrix4x4 rootLocalToWorld;
+    public quaternion rootRotation;
+    public bool lockTwist;
     public float3 gravity;
     public float3 windForce;
     public float dt;
+    private Vector3 targetDirection, projectedRefUp, projectedCurUp, refUp, curUp;
+    private Quaternion finalRot, clearTwist;
+    private const float epsilon = .001f;
     public void Execute(int index, TransformAccess transform)
     {
         /* for(int i = 0; i < bonesList.Count; i++)
@@ -56,8 +61,22 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
             }
         }
         execCurrentBone.prevTip = transform.position + ((Vector3)execCurrentBone.prevTip - transform.position).normalized * execCurrentBone.boneLength;
-        transform.rotation = Quaternion.FromToRotation(transform.rotation * boneAxis, ((Vector3)execCurrentBone.prevTip - transform.position).normalized)
-        * transform.rotation;
+        targetDirection = ((Vector3)execCurrentBone.prevTip - transform.position).normalized;
+        finalRot = Quaternion.FromToRotation(transform.rotation * boneAxis, targetDirection) * transform.rotation;
+        if (lockTwist)
+        {
+            refUp = (Quaternion)rootRotation * boneUp;
+            curUp = finalRot * boneUp;
+            projectedRefUp = Vector3.ProjectOnPlane(refUp, targetDirection);
+            projectedCurUp = Vector3.ProjectOnPlane(curUp, targetDirection);
+            if (projectedRefUp.sqrMagnitude > epsilon && projectedCurUp.sqrMagnitude > epsilon)
+            {
+                clearTwist = Quaternion.FromToRotation(projectedCurUp, projectedRefUp);
+                finalRot = clearTwist * finalRot;
+            }
+        }
+
+        transform.rotation = finalRot;
         bonesList[index] = execCurrentBone;
     }
 }
