@@ -29,6 +29,7 @@ public class SpringBone : MonoBehaviour
     [Header("Spring Bone lock twists Settings, don't need to set boneUp if lockTwist is disabled")]
     [SerializeField]
     private bool lockTwist=false;
+    [Header("Don't need to set boneUp if lockTwist is disabled")]
     [SerializeField]
     private Vector3 boneUp=Vector3.forward;
 
