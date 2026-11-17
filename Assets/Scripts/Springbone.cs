@@ -13,6 +13,7 @@ public class SpringBone : MonoBehaviour
         public float3 prevTip,currentTip,dx,force,velocity,localTipPos;
         public float boneLength;
     }
+    [Header("Spring Bone Force Settings")]
     [SerializeField]
     private float stiffness=10f;
     [SerializeField]
@@ -22,13 +23,15 @@ public class SpringBone : MonoBehaviour
     [SerializeField]
     private float mass=1;
     [SerializeField]
+    private bool windEffect=true;
+    [SerializeField]
     private Vector3 boneAxis=Vector3.up;
+    [Header("Spring Bone lock twists Settings, don't need to set boneUp if lockTwist is disabled")]
     [SerializeField]
     private bool lockTwist=false;
     [SerializeField]
     private Vector3 boneUp=Vector3.forward;
-    [SerializeField]
-    private bool windEffect=true;
+
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
