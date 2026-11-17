@@ -27,6 +27,8 @@ public class SpringBone : MonoBehaviour
     private bool lockTwist=false;
     [SerializeField]
     private Vector3 boneUp=Vector3.forward;
+    [SerializeField]
+    private bool windEffect=true;
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
@@ -101,7 +103,8 @@ public class SpringBone : MonoBehaviour
             collidersDataBlock=collidersDataBlock,
             rootRotation=root.rotation,
             boneUp=boneUp,
-            lockTwist=lockTwist
+            lockTwist=lockTwist,
+            windEffect=windEffect
         };
         handle=boneJob.Schedule(transformDataBlock,handle);
         handle.Complete();

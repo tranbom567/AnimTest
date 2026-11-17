@@ -12,7 +12,7 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
     public float3 boneAxis, boneUp;
     public Matrix4x4 rootLocalToWorld;
     public quaternion rootRotation;
-    public bool lockTwist;
+    public bool lockTwist,windEffect;
     public float3 gravity;
     public float3 windForce;
     public float dt;
@@ -46,12 +46,14 @@ public struct SpringBoneJobProcessing : IJobParallelForTransform
         execCurrentBone.force = stiffness * execCurrentBone.dx;
         execCurrentBone.force -= dragForce * execCurrentBone.velocity;
         execCurrentBone.force += gravity * mass;
-        execCurrentBone.force += windForce;
+        if(windEffect)
+            execCurrentBone.force += windForce;
         float3 colliderWorldPos;
 
         execCurrentBone.velocity += execCurrentBone.force * dt;
         execCurrentBone.prevTip += execCurrentBone.velocity * dt;
 
+        
         foreach (var colliderData in collidersDataBlock)
         {
             colliderWorldPos = colliderData.position;
