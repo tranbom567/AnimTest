@@ -45,13 +45,8 @@ The project is using Unity `6000.6.4f1`.
 
 -  **Wind Effect**: enables or disables wind force for this chain.
 
-## Current constraints and performance notes
-
-  
-
-
-- The spring job is scheduled, but the immediate `Complete()` makes the main thread wait every frame. This preserves same-frame transform availability and prevent unsafe writing to `NativeArray<SpringBoneCollider.SpringBoneColliderDataBlock>`  but limits the benefit of asynchronous job execution. For small chains, profile against a regular main-thread loop.
+## Current constraints
 
 - Collider radius is multiplied by `transform.localScale.magnitude`; this is an approximation, particularly for non-uniform scale.
 
-- The collider manager and wind manager are accessed through singletons and should be present and initialized in the scene(wind zones that added in runtime is unused).
+- The collider manager and wind manager are accessed through singletons and should be present and initialized in the scene(wind zones and colliders that added in runtime is unused).
