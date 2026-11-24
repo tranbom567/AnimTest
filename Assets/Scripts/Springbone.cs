@@ -11,6 +11,7 @@ public class SpringBone : MonoBehaviour
     public struct Bone
     {
         public float3 prevTip,currentTip,dx,force,velocity,localTipPos;
+        public Quaternion initialRotation;
         public float boneLength;
     }
     [Header("Spring Bone Force Settings")]
@@ -26,13 +27,6 @@ public class SpringBone : MonoBehaviour
     private bool windEffect=true;
     [SerializeField]
     private Vector3 boneAxis=Vector3.up;
-    [Header("Spring Bone lock twists Settings")]
-    [SerializeField]
-    private bool lockTwist=false;
-    [Header("Don't need to set boneUp if lockTwist is disabled")]
-    [SerializeField]
-    private Vector3 boneUp=Vector3.forward;
-
     private Transform root;
     private NativeList<Bone> bonesList=new(Allocator.Persistent);
     private TransformAccessArray transformDataBlock;
@@ -54,6 +48,7 @@ public class SpringBone : MonoBehaviour
             boneInit.currentTip=root.TransformPoint(boneInit.localTipPos);
             boneInit.prevTip=boneInit.currentTip;
             boneInit.boneLength=Vector3.Magnitude(boneInit.currentTip-(float3)currentTrans.position);
+            boneInit.initialRotation=currentTrans.rotation;
             bonesList.Add(boneInit);
             transList.Add(currentTrans);
             currentTrans=childBone;
@@ -67,6 +62,7 @@ public class SpringBone : MonoBehaviour
             boneInit.localTipPos=putChildToRootLocal;
             boneInit.currentTip=root.TransformPoint(boneInit.localTipPos);
             boneInit.prevTip=boneInit.currentTip;
+            boneInit.initialRotation=currentTrans.rotation;
             boneInit.boneLength=lastBoneLength;
             bonesList.Add(boneInit);
             transList.Add(currentTrans);
@@ -94,8 +90,6 @@ public class SpringBone : MonoBehaviour
             windForce=WindZoneData.getInstance.getWindForce,
             collidersDataBlock=SpringBoneColliderManager.getInstance.GetColliderDataBlocks,
             rootRotation=root.rotation,
-            boneUp=boneUp,
-            lockTwist=lockTwist,
             windEffect=windEffect
         };
         handle=boneJob.Schedule(transformDataBlock,handle);
