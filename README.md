@@ -39,10 +39,6 @@ The project is using Unity `6000.6.4f1`.
 
 -  **Bone Axis**: the local axis that should point along the bone.
 
--  **Lock Twist**: corrects twist relative to the configured reference up direction.
-
--  **Bone Up**: local up reference used by twist locking(don't need if lockTwist is disabled).
-
 -  **Wind Effect**: enables or disables wind force for this chain.
 
 ## Current constraints
